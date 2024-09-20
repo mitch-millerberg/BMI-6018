@@ -310,9 +310,12 @@ Given the predefined sets above and using set methods
 """
  #Yes, set E is a strict subset of set A ( E ⊂ A E⊂A).
 
-# I'm switching to "#" commentating out the questions because I think it's easier than """
+# I'm switching to "#" commentating to mark out the questions because I think it's easier and looks 
+# cleaner than usings """. If I am using spyder instead of jupyter to do my homework will that be a problem?
+#I am able to uploading my code to my github repo. I just want to know if not using Jupyter notebooks  will be a 
+# problem later on in this class?k
 
- #.c Create a set that is the intersection of set A and set B
+#.c Create a set that is the intersection of set A and set B
 # Intersection using the intersection() method
 intersection_set = three_setA.intersection(three_setB)
 print("intersection_set", intersection_set)
@@ -356,28 +359,75 @@ Problem 4: Changing variable types
 For each step you will modify a variable, then append the type of the variable
 to a list. Do not recreate the list variable, it should be a running list of 
 types.
-
-4.a Create a variable of type int with the value of 8
- .b Create an empty list 
- .c Using type(), add the type of 4.a to this list
- .d Add 0.39 to 4.c
- .e append the type of 0.39 to the list
- .f exponentiate to the -10, ie: 4.d^-10,(hint: there might be an artihmetic operator to do so) round it to no 
-    decimal places, and append to list.
- .g append the type to the list
- 
- 
-Problem 5: More variable type changes
-
-Continue from where you left off in Problem 4.
-
-5.a Manually create a dictionary where the values are items in the list from where we left in 
-    problem 4, and the keys should be their index in the list. Print the dictionary.
- .b Add 300 and coerce it into a string
- .c append the type to the list
- .d slice the string up to the 2nd element
- .e append the type to the list
- .f use list comprehension to convert this into a new list of integers
- .g append the type to the list
- .h append the type of three_setA to the list
 """
+"""
+#4.a Create a variable of type int with the value of 8
+"""
+var_a = 8  # Integer
+"""
+
+# .b Create an empty list 
+"""
+type_list = []  # [] make an Empty list
+
+"""
+# .c Using type(), add the type of 4.a to this list
+"""
+type_list.append(type(var_a))  # Append type of var_a (int)
+"""
+"""
+# .d Add 0.39 to 4.c
+"""
+"""
+var_d = 0.39  # Float
+
+"""
+# .e append the type of 0.39 to the list
+"""
+type_list.append(type(var_d))  # Append type of var_d (float)
+"""
+
+# .f exponentiate to the -10, ie: 4.d^-10,(hint: there might be an artihmetic operator to do so) round it to no 
+# decimal places, and append to list.
+"""
+result_f = round(var_d ** -10)  # Exponentiate to -10 and round
+#  
+
+type_list.append(type(result_f))  # Append type of result_f (int)
+
+"""
+#In Python, the operation ** is the exponentiation operator. 
+#It raises the number on the left to the power of the number on the right.
+# .g append the type to the list
+"""
+print(type_list)
+ 
+ 
+#Problem 5: More variable type changes
+#Continue from where you left off in Problem 4.
+
+# 5.a Manually create a dictionary where the values are items in the "type_list" 
+# and the keys should be their index in the list. Print the dictionary.
+type_dict ={index: str(type_item) for index, type_item in enumerate(type_list)}
+print("type dictionary: ",type_dict)
+
+#  .b Add 300 and coerce it into a string
+var_b = str(300)
+#  .c append the type to the list
+type_list.append(type(var_b))
+
+#  .d slice the string up to the 2nd element
+sliced_string = var_b[:2]
+print("sliced",sliced_string)
+#  .e append the type to the list
+type_list.append(type((sliced_string)))
+print("sliced",sliced_string)            
+#  .f use list comprehension to convert this into a new list of integers
+int_list = [int(char) for char in sliced_string] 
+
+#  .g append the type to the list
+type_list.append(type(int_list))
+#  .h append the type of three_setA to the list
+three_setA = {1, 2, 3}  # Example set
+type_list.append(type(three_setA))  # Append type of three_setA (set)
+print(type_list) 
