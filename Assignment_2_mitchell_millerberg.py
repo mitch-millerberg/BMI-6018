@@ -134,7 +134,7 @@ Continue from where you left off in Problem 4.
  .h append the type of three_setA to the list
 """
 
-#Start your assignment here
+#Start 
 
 """
 #Problem 1: Lists, Sets and Coersion

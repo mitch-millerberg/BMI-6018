@@ -78,3 +78,8 @@ print("The number of item in list_1 is ",count)
  .h Check if the number of items in the set is the same as the 
     number of items in the list
 """
+# Check if the lengths are the same
+if len(list_1) == len(set_list):
+    print("The number of items in the list and the set are the same.")
+else:
+    print("The number of items in the list and the set are different.")

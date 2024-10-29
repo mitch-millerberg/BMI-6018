@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Oct 27 14:18:43 2024
+
+Due on  Oct 28 2024
 
 @author: mitch
 1. Import numpy as np and print the version number.
