@@ -51,9 +51,6 @@ print(heart_disease.variables)
 """
 Write code to demonstrate the following Pandas functions:
 
-
-
-  
 **Melt**: The `pd.melt()` function reshapes the features DataFrame from wide to long format, creating a new DataFrame with each feature as a row.
 
 **Pivot**: The `pivot()` function is used to revert the melted DataFrame back to its original wide format, using the 'index' as identifiers.
@@ -66,33 +63,32 @@ Write code to demonstrate the following Pandas functions:
 
 """
 
-#Melt
-# **Melt**
+# Melt
 # Melting the features DataFrame to long format
 melted_df = pd.melt(X.reset_index(), id_vars=['index'], var_name='Feature', value_name='Value')
 print("\nMelted DataFrame:")
 print(melted_df)
 
 
-# **Pivot**
+# Pivot
 # Pivoting the melted DataFrame back to wide format
 pivoted_df = melted_df.pivot(index='index', columns='Feature', values='Value').reset_index()
 print("\nPivoted DataFrame:")
 print(pivoted_df)
 
-# **Aggregation**
+# Aggregation
 # Example aggregation to find average value of a feature by index
 agg_df = melted_df.groupby('Feature').agg({'Value': 'mean'}).reset_index()
 print("\nAggregated DataFrame (Average Value by Feature):")
 print(agg_df)
 
-# **Iteration**
+# Iteration
 # Iterating over rows in the melted DataFrame
 print("\nIterating over rows:")
 for index, row in melted_df.iterrows():
     print(f"Index {row['index']} has Feature {row['Feature']} with Value {row['Value']}.")
     
-# **Groupby**
+# Groupby
 # Grouping by feature and counting number of occurrences of each feature value
 grouped_df = melted_df.groupby('Feature').size().reset_index(name='Count')
 print("\nGrouped DataFrame (Count of Each Feature):")
