@@ -102,6 +102,13 @@ largest_avg_dep_delay = flights_data.groupby('date')['dep_delay'].mean().max()
 
 print(f"The date with the largest average departure delay is: {q_5} with an average delay of {largest_avg_dep_delay:.2f} minutes.")
 
+#Question 6 Which date has the largest average arrival delay? pd slice with date
+# and float
+
+q_6 = flights_data.groupby('date')['arr_delay'].mean().idxmax()
+largest_avg_arr_delay = flights_data.groupby('date')['arr_delay'].mean().max()
+
+print(f"The date with the largest average arrival delay is: {q_6} with an average delay of {largest_avg_arr_delay:.2f} minutes.")
 
 #Question 7 Which flight departing LGA or JFK in 2013 flew the fastest? pd slice with tailnumber and speed
 #speed = distance/airtime
