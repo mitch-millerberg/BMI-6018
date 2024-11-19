@@ -117,7 +117,11 @@ def euclidean_distance(series1, series2):
 distance = euclidean_distance(p, q)
 print("Euclidean Distance:", distance)
 
-#Question 2
+#Question 2 
+#Change the order of columns of a dataframe. Interchange columns 'a' and 'c'.
+#Input
+#df = pd.DataFrame(np.arange(20).reshape(-1, 5), columns=list('abcde'))
+
 # Create the DataFrame
 df = pd.DataFrame(np.arange(20).reshape(-1, 5), columns=list('abcde'))
 
@@ -126,49 +130,60 @@ print("Original DataFrame:")
 print(df)
 
 # Interchange columns 'a' and 'c'
-df[['a', 'c']] = df[['c', 'a']]
+df = df.reindex(columns=['c', 'b', 'a', 'd', 'e'])
 
 # Display the modified DataFrame
 print("\nDataFrame after interchanging columns 'a' and 'c':")
 print(df)
 
+
 #Question 3
+#Change the order of columns of a dataframe. Create a generic function to interchange two columns, without
+#hardcoding column names.
+
+#Input
 # Create a DataFrame with values from 0 to 19 reshaped into 4 rows and 5 columns
 df = pd.DataFrame(np.arange(20).reshape(-1, 5), columns=list('abcde'))
+
+def interchange_columns(df, col1, col2):
+    """
+    Interchange the positions of two columns in a DataFrame.
+    
+    Parameters:
+    df (pd.DataFrame): The input DataFrame
+    col1 (str): Name of the first column to interchange
+    col2 (str): Name of the second column to interchange
+    
+    Returns:
+    pd.DataFrame: A new DataFrame with the specified columns interchanged
+    """
+    # Get the list of column names
+    cols = list(df.columns)
+    
+    # Find the indices of the columns to be interchanged
+    index1, index2 = cols.index(col1), cols.index(col2)
+    
+    # Swap the positions of the columns in the list
+    cols[index1], cols[index2] = cols[index2], cols[index1]
+    
+    # Return a new DataFrame with reordered columns
+    return df.reindex(columns=cols)
+
 
 # Set display options to suppress scientific notation and format floats
 pd.options.display.float_format = '{:.4f}'.format
 
-# Print the DataFrame
+# Print the original DataFrame
+print("Original DataFrame:")
 print(df)
 
-#other examplse that i found while doing this problem and want to keep them in the code.
-# sample DataFrame with scientific notation
-data = {
-    'A': [1.234567e-03, 2.345678e-04, 3.456789e-05],
-    'B': [4.567890e+02, 5.678901e+03, 6.789012e+04]
-}
-df = pd.DataFrame(data)
+# Use the function to interchange columns 'b' and 'd'
+df_modified = interchange_columns(df, 'a', 'e')
 
-# Method 1: Using round() to format numbers
-df_rounded = df.round(4)
+# Print the modified DataFrame
+print("\nDataFrame after interchanging columns 'a' and 'e':")
+print(df_modified)
 
-# Method 2: Using apply() to format as strings with specified decimal places
-df_formatted = df.apply(lambda x: x.map('{:.4f}'.format))
-
-# Method 3: Set global option to suppress scientific notation
-pd.set_option('display.float_format', lambda x: '%.4f' % x)
-
-# Print the DataFrame with rounded values
-print("DataFrame with rounded values:")
-print(df_rounded)
-
-# Print the DataFrame with formatted strings
-print("\nDataFrame with formatted strings:")
-print(df_formatted)
-
-# Resetting the display option to default if needed
-pd.reset_option('display.float_format')
 
 #Question 4
 # set the DataFrame with values from 0 to 19, reshaped into 4 rows and 5 columns
